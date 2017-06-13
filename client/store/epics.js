@@ -1,51 +1,26 @@
 import { combineEpics } from "redux-observable";
 import { Observable } from "rxjs";
 import sha256 from "sha256";
-import socket from "./socketConnection";
+import RealTimeAPISocket from "./RealTimeAPISocket";
 
-// Ping Server
+const URL = "ws://localhost:3000/websocket";
+let realtimeAPI = new RealTimeAPISocket(URL);
 
-socket.filter(msg => msg.msg === "ping")
-	.map(msg => socket.next(JSON.stringify({msg:"pong"})));
-
-
-socket.subscribe(
-	data => console.log(data)
-);
+realtimeAPI.keepAlive(); // Ping Server
 
 const initConnection = action$ =>
 	action$.ofType("INIT")
-		.do(
-		action => {
+		.mergeMap(action => {
 			if (!action.payload.status.connected)
-				socket.next(JSON.stringify({ "msg": "connect", "version": "1", "support": ["1", "pre2", "pre1"] }));
-		}
-		)
-		.mergeMap(action => socket)
-		.filter(msg => (msg.msg === "connected"))
-		.map(msg => ({ type: "CONNECTED" }));
-
+				return realtimeAPI.connectToServer();
+		}).map(msg => ({ type: "CONNECTED" }));
 
 const loginUser = action$ =>
 	action$.ofType("LOGIN")
-		.do(
-		action => {
+		.mergeMap(action => {
 			if (action.payload.status.connected && !action.payload.status.login)
-				socket.next(JSON.stringify({
-					"msg": "method",
-					"method": "login",
-					"params": [{
-						"user": { "username": action.payload.user },
-						"password": {
-							"digest": sha256(action.payload.password),
-							"algorithm": "sha-256"
-						}
-					}],
-					"id": "7"
-				}));
-		}
-		).mergeMap(action => socket)
-		.filter(msg => (msg.msg === "result" && msg.id === "7" && !msg.error))
-		.map(msg => ({ type: "STORE_LOGININFO", payload: msg }));
+				return realtimeAPI.login(action.payload.user, action.payload.password);
+		}).first().map(msg => ({ type: "STORE_LOGININFO", payload: msg }));
+
 
 export default combineEpics(initConnection, loginUser); 
