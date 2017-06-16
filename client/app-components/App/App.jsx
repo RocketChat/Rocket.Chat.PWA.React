@@ -6,36 +6,46 @@ import { connect } from "react-redux";
 class App extends Component {
 
 	componentWillMount() {
-		console.log("will mount");
-		if (!this.props.status.connected)
-			this.props.dispatch({ type: "INIT", payload: { status: { connected: this.props.status.connected } } });
+		if (!this.props.connection.isConnected)
+			this.props.dispatch({ type: "INIT", payload: { connection: { isConnected: this.props.connection.isConnected } } });
 	}
 
 	handleClick() {
-		console.log("click");
-		if (this.props.status.connected && !this.props.status.login && this.refs.uname.value !== "" && this.refs.password.value !== "") {
+		if (this.props.connection.isConnected && !this.props.user.isLoggedIn && this.refs.uname.value !== "" && this.refs.password.value !== "") {
 			this.props.dispatch({
 				type: "LOGIN", payload: {
 					user: this.refs.uname.value,
 					password: this.refs.password.value,
-					status: {
-						connected: this.props.status.connected,
-						login: this.props.status.login
+					connection: {
+						isConnected: this.props.connection.isConnected,
+						isLoggedIn: this.props.user.isLoggedIn
 					}
 				}
 			});
 		}
 	}
 
+	handleClickRoom() {
+		this.props.dispatch({
+			type: "GET_ROOMS", payload: {
+				connection: {
+					isConnected: this.props.connection.isConnected,
+					isLoggedIn: this.props.user.isLoggedIn
+				}
+			}
+		});
+	}
+
 	render() {
-		console.log("render");
 		return (
 			<div>
-				App
-				<input type="text" placeholder="Username" ref="uname"/>
-				<input type="password" placeholder="Password" ref="password"/>
+				<input type="text" placeholder="Username" ref="uname" />
+				<input type="password" placeholder="Password" ref="password" />
 				<button onClick={() => this.handleClick()}>Login</button>
-				{JSON.stringify(this.props.status)}
+				<button onClick={() => this.handleClickRoom()}>Get Rooms</button>
+				<div>
+					{JSON.stringify(this.props, null, "\t")}
+				</div>
 			</div>
 		);
 	}
