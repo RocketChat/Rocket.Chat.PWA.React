@@ -7,7 +7,7 @@ const URL = "wss://demo.rocket.chat/websocket";
 let realtimeAPI = new RealTimeAPISocket(URL);
 
 realtimeAPI.onError(err => console.log("ERRR", err));
-realtimeAPI.onComplete(() => console.log("FIN"));
+realtimeAPI.onComplete(() => console.log("Complete"));
 realtimeAPI.onMessage( msg => console.log(msg));
 
 realtimeAPI.keepAlive(); // Ping Server
