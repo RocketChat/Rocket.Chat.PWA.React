@@ -14,18 +14,24 @@ export default class RealTimeAPISocket {
 			this.socket = param;
 			this.url = this.socket.url;
 		}
+		this.messageHandler = null;
+		this.errorHandler = null;
+		this.completeHandler = null;
 	}
 
-	onMessage(messageHandler){
-		this.subscribe(messageHandler,null, null);
+	onMessage(messageHandler) {
+		this.messageHandler = messageHandler;
+		this.subscribe(this.messageHandler, this.errorHandler, this.completeHandler);
 	}
 
-	onComplete(completeHandler){
-		this.subscribe(null, null, completeHandler);
+	onComplete(completeHandler) {
+		this.completeHandler = completeHandler;
+		this.subscribe(this.messageHandler, this.errorHandler, this.completeHandler);
 	}
 
-	onError(errorHandler){
-		this.subscribe(null,errorHandler,null);
+	onError(errorHandler) {
+		this.errorHandler = errorHandler;
+		this.subscribe(this.messageHandler, this.errorHandler, this.completeHandler);
 	}
 
 	// Send a JSON Object via WebSocket Connection
@@ -35,7 +41,10 @@ export default class RealTimeAPISocket {
 
 	// Subscribe to the WebSocket Observable
 	subscribe(next, err, complete) {
-		this.getObservable().subscribe(next, err, complete);
+		this.messageHandler = next;
+		this.errorHandler = err;
+		this.completeHandler = complete;
+		this.getObservable().subscribe(this.messageHandler, this.errorHandler, this.completeHandler);
 	}
 
 	// Sends "pong" message to "ping" received, to keep the connection alive
@@ -71,7 +80,7 @@ export default class RealTimeAPISocket {
 			}
 		);
 
-		let addedOb = this.getObservable().buffer(resultObservable).find(obj => obj.find(msg => msg.id === resultId  && resultId !== undefined) !== undefined).map(obj => obj[0]);
+		let addedOb = this.getObservable().buffer(resultObservable).find(obj => obj.find(msg => msg.id === resultId && resultId !== undefined) !== undefined).map(obj => obj[0]);
 		return Observable.merge(resultObservable, addedOb);
 
 	}
