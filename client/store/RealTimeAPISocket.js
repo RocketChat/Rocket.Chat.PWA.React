@@ -71,7 +71,7 @@ export default class RealTimeAPISocket {
 			}
 		);
 
-		let addedOb = this.getObservable().buffer(resultObservable).find(obj => obj.find(msg => msg.id === resultId) !== undefined).map(obj => obj[0]);
+		let addedOb = this.getObservable().buffer(resultObservable).find(obj => obj.find(msg => msg.id === resultId  && resultId !== undefined) !== undefined).map(obj => obj[0]);
 		return Observable.merge(resultObservable, addedOb);
 
 	}
