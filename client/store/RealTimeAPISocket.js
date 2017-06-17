@@ -16,6 +16,18 @@ export default class RealTimeAPISocket {
 		}
 	}
 
+	onMessage(messageHandler){
+		this.subscribe(messageHandler,null, null);
+	}
+
+	onComplete(completeHandler){
+		this.subscribe(null, null, completeHandler);
+	}
+
+	onError(errorHandler){
+		this.subscribe(null,errorHandler,null);
+	}
+
 	// Send a JSON Object via WebSocket Connection
 	send(msg) {
 		return this.socket.next(JSON.stringify(msg));
@@ -35,7 +47,7 @@ export default class RealTimeAPISocket {
 
 	// Returns the WebSocket Observable.
 	getObservable() {
-		return this.socket;
+		return this.socket.catch(err => Observable.of(err));
 	}
 
 	// Returns Observable filtered for "connected" message

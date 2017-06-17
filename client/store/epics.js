@@ -6,6 +6,10 @@ import RealTimeAPISocket from "./RealTimeAPISocket";
 const URL = "wss://demo.rocket.chat/websocket";
 let realtimeAPI = new RealTimeAPISocket(URL);
 
+realtimeAPI.onError(err => console.log("ERRR", err));
+realtimeAPI.onComplete(() => console.log("FIN"));
+realtimeAPI.onMessage( msg => console.log(msg));
+
 realtimeAPI.keepAlive(); // Ping Server
 
 // Epic to Initialize the Connection with the Server.
@@ -14,8 +18,10 @@ const initConnection = action$ =>
 		.mergeMap(action => {
 			if (!action.payload.connection.isConnected)
 				return realtimeAPI.connectToServer();
-		}).map(msg => ({ type: "CONNECTED", payload: {server: realtimeAPI.url} }))
-		.catch(err => Observable.of(err).map(err => ({ type: "ERROR", payload: err })));
+		})
+		.map(msg => { 
+			return ({ type: "CONNECTED", payload: {server: realtimeAPI.url} });
+		});
 		
 // Epic to Login to the Server.
 const loginUser = action$ =>
@@ -26,8 +32,9 @@ const loginUser = action$ =>
 		}).map(msg => {
 			switch (msg.msg) {
 			case "result":
-				if(msg.result)
+				if(msg.result){
 					return ({ type: "STORE_LOGININFO", payload: msg.result });
+				}
 				else
 					return ({ type: "LOGIN_ERROR", payload: msg.error });
 			case "added":
