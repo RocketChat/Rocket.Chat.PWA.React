@@ -149,15 +149,16 @@ export default class RealTimeAPISocket {
 		return this.getLoginObservable(id);
 	}
 
-	// Get Rooms User's Subscribed to
-	getRooms() {
+	// Get Observalble to the Method Call from Rocket.Chat Realtime API
+
+	callMethod(method, ...params) {
 		let id = uuid();
 		this.send({
 			"msg": "method",
-			"method": "rooms/get",
-			"id": id,
-			"params": [{ "$date": Date.now() / 1000 }]
-		});
+			method,
+			id,
+			params
+		})
 		return this.getIDFilteredResultObservable(id);
 	}
 

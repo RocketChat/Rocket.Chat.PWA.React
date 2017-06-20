@@ -27,8 +27,10 @@ const initConnection = action$ =>
 const loginUser = action$ =>
 	action$.ofType("LOGIN")
 		.mergeMap(action => {
-			if (action.payload.connection.isConnected && !action.payload.user.isLoggedIn)
+			if (action.payload.connection.isConnected && !action.payload.connection.isLoggedIn)
 				return realtimeAPI.login(action.payload.user, action.payload.password);
+			else
+				return Observable.of({msg: "error",	error: "Is Logged in or Not Connected to Server"});
 		}).map(msg => {
 			switch (msg.msg) {
 			case "result":
@@ -49,9 +51,10 @@ const loginUser = action$ =>
 const getRooms = action$ =>
 	action$.ofType("GET_ROOMS")
 		.mergeMap(action => {
-			if (action.payload.connection.isConnected && action.payload.connection.isLoggedIn){
-				return realtimeAPI.getRooms();
-			}
+			if (action.payload.connection.isConnected && action.payload.connection.isLoggedIn)
+				return realtimeAPI.callMethod("rooms/get",[{ "$date": Date.now() / 1000 }]);
+			else
+				return Observable.of({msg: "error",	error: "Not Loggedin or Not Connected to Server"});
 		}).map(msg => {
 			switch (msg.msg) {
 			case "result":
