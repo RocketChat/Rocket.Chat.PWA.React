@@ -4,7 +4,7 @@ export const roomReducer = function (state = {}, action) {
 	case "STORE_ROOMS":
 		state = {
 			...state,
-			...action.payload.update
+			...action.payload
 		};
 		return state;
 
