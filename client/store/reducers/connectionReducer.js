@@ -1,6 +1,8 @@
+import { CONNECTION_ESTABLISHED } from "./../actions/actionNames";
+
 export const connectionReducer = function (state = { isConnected: false }, action) {
 	switch (action.type) {
-	case "CONNECTED":
+	case CONNECTION_ESTABLISHED:
 		state = {
 			...state,
 			isConnected: true,

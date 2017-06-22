@@ -18,6 +18,7 @@
     "react-router-dom": "^4.1.1",
     "redux": "^3.6.0",
     "redux-observable": "^0.14.1",
+    "rocket.chat.realtime.api.rxjs": "^0.0.2",
     "rxjs": "^5.4.0",
     "sha256": "^0.2.0",
     "uuid": "^3.0.1"

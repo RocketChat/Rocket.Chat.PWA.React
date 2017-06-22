@@ -2,38 +2,41 @@ import React, { Component } from "react";
 import "./App.sass";
 import { connect } from "react-redux";
 
+import { loginUser } from "./../../store/actions/userActions";
+import { getRooms } from "./../../store/actions/roomActions";
+import { initConnection } from "./../../store/actions/connectionActions";
 
 class App extends Component {
 
 	componentWillMount() {
 		if (!this.props.connection.isConnected)
-			this.props.dispatch({ type: "INIT", payload: { connection: { isConnected: this.props.connection.isConnected } } });
+			this.props.dispatch(initConnection({
+				connection: {
+					isConnected: this.props.connection.isConnected
+				}
+			}));
 	}
 
 	handleClick() {
 		if (this.props.connection.isConnected && !this.props.user.isLoggedIn && this.refs.uname.value !== "" && this.refs.password.value !== "") {
-			this.props.dispatch({
-				type: "LOGIN", payload: {
-					user: this.refs.uname.value,
-					password: this.refs.password.value,
-					connection: {
-						isConnected: this.props.connection.isConnected,
-						isLoggedIn: this.props.user.isLoggedIn
-					}
-				}
-			});
-		}
-	}
-
-	handleClickRoom() {
-		this.props.dispatch({
-			type: "GET_ROOMS", payload: {
+			this.props.dispatch(loginUser({
+				user: this.refs.uname.value,
+				password: this.refs.password.value,
 				connection: {
 					isConnected: this.props.connection.isConnected,
 					isLoggedIn: this.props.user.isLoggedIn
 				}
+			}));
+		}
+	}
+
+	handleClickRoom() {
+		this.props.dispatch(getRooms({
+			connection: {
+				isConnected: this.props.connection.isConnected,
+				isLoggedIn: this.props.user.isLoggedIn
 			}
-		});
+		}));
 	}
 
 	render() {
