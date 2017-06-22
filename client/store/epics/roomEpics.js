@@ -1,7 +1,7 @@
 import { Observable } from "rxjs";
 
-import { GET_ROOMS } from "./../../actions/actionNames";
-import { storeRooms } from "./../../actions/roomActions";
+import { GET_ROOMS } from "./../actions/actionNames";
+import { storeRooms } from "./../actions/roomActions";
 
 // Epic to get the Rooms user is subscribed to.
 export const getRooms = (action$, store, { realtimeAPI }) =>

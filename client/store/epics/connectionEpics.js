@@ -1,6 +1,6 @@
-import { INIT_CONNECTION } from "./../../actions/actionNames";
+import { INIT_CONNECTION } from "./../actions/actionNames";
 
-import { connectionEstablished } from "./../../actions/connectionActions";
+import { connectionEstablished } from "./../actions/connectionActions";
 
 // Epic to Initialize the Connection with the Server.
 export const initConnection = (action$, store, { realtimeAPI }) =>
