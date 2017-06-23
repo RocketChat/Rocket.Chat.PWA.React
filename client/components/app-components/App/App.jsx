@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import "./App.sass";
 import { connect } from "react-redux";
 
-import { loginUser } from "./../../store/actions/userActions";
-import { getRooms } from "./../../store/actions/roomActions";
-import { initConnection } from "./../../store/actions/connectionActions";
+import { loginUser } from "./../../../store/actions/userActions";
+import { getRooms } from "./../../../store/actions/roomActions";
+import { initConnection } from "./../../../store/actions/connectionActions";
 
 class App extends Component {
 

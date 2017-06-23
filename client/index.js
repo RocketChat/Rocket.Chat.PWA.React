@@ -3,7 +3,7 @@ import { render } from "react-dom";
 import { BrowserRouter, Route } from "react-router-dom";
 import { Observable } from "rxjs";
 import store from "./store/configStore";
-import App from "./app-components/App/App";
+import App from "./components/app-components/App/App";
 import { Provider } from "react-redux";
 
 const application = (
