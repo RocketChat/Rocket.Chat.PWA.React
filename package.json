@@ -9,7 +9,8 @@
   "scripts": {
     "start": "webpack-dev-server --config webpack.config.js",
     "prod": "node build.js production server",
-    "build": "node build.js production filesystem"
+    "build": "node build.js production filesystem",
+    "lint-fix": "eslint --fix ./** --quiet"
   },
   "dependencies": {
     "react": "^15.5.4",
