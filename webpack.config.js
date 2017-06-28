@@ -4,6 +4,7 @@ const webpack = require("webpack");
 const path = require("path");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CompressionPlugin = require("compression-webpack-plugin");
 
 const nodeEnv = process.env.NODE_ENV || "development";
 const isProd = nodeEnv === "production";
@@ -57,7 +58,14 @@ if (isProd) {
 				comments: false
 			},
 		}),
-		extractCSS
+		extractCSS,
+		new CompressionPlugin({
+			asset: "[path].gz[query]",
+			algorithm: "gzip",
+			test: /\.js$|\.css$|\.html$/,
+			threshold: 10240,
+			minRatio: 0.8
+		})
 	);
 
 	jsEntry.unshift(
@@ -78,7 +86,12 @@ module.exports = {
 		js: jsEntry,
 		vendor: [
 			"react",
-			"react-dom"
+			"react-dom",
+			"redux",
+			"react-redux",
+			"react-router-dom",
+			"rxjs",
+			"redux-observable"
 		]
 	},
 	output: {
