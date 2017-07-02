@@ -13,6 +13,7 @@
     "lint-fix": "eslint --fix ./**/*.js? --quiet"
   },
   "dependencies": {
+    "material-design-lite": "^1.3.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.5",

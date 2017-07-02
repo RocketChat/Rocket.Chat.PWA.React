@@ -6,6 +6,9 @@ import store from "./store/configStore";
 import App from "./components/app-components/App/App";
 import { Provider } from "react-redux";
 
+import "material-design-lite";
+import "./styles/global-styles.sass";
+
 const application = (
 	<Provider store={store}>
 		<BrowserRouter>

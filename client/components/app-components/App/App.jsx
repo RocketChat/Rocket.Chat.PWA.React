@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import "./App.sass";
 import { connect } from "react-redux";
 
-import { loginUser } from "./../../../store/actions/userActions";
-import { getRooms } from "./../../../store/actions/roomActions";
 import { initConnection } from "./../../../store/actions/connectionActions";
+
+import LoginComponent from "./../LoginComponent/LoginComponent";
+import ErrorSnackbar from "./../ErrorSnackbar/ErrorSnackbar";
 
 class App extends Component {
 
-	componentWillMount() {
+	componentDidMount() {
 		if (!this.props.connection.isConnected)
 			this.props.dispatch(initConnection({
 				connection: {
@@ -17,38 +18,17 @@ class App extends Component {
 			}));
 	}
 
-	handleClick() {
-		if (this.props.connection.isConnected && !this.props.user.isLoggedIn && this.refs.uname.value !== "" && this.refs.password.value !== "") {
-			this.props.dispatch(loginUser({
-				user: this.refs.uname.value,
-				password: this.refs.password.value,
-				connection: {
-					isConnected: this.props.connection.isConnected,
-					isLoggedIn: this.props.user.isLoggedIn
-				}
-			}));
-		}
-	}
-
-	handleClickRoom() {
-		this.props.dispatch(getRooms({
-			connection: {
-				isConnected: this.props.connection.isConnected,
-				isLoggedIn: this.props.user.isLoggedIn
-			}
-		}));
+	shouldComponentUpdate(){
+		return false;
 	}
 
 	render() {
 		return (
-			<div>
-				<input type="text" placeholder="Username" ref="uname" />
-				<input type="password" placeholder="Password" ref="password" />
-				<button onClick={() => this.handleClick()}>Login</button>
-				<button onClick={() => this.handleClickRoom()}>Get Rooms</button>
-				<div>
-					{JSON.stringify(this.props, null, "\t")}
+			<div className="mdl-grid" id="app">
+				<div className="mdl-cell mdl-cell--4-offset-desktop mdl-cell--2-offset-tablet mdl-cell--4-col mdl-cell--middle">
+					<LoginComponent></LoginComponent>
 				</div>
+					<ErrorSnackbar></ErrorSnackbar>
 			</div>
 		);
 	}

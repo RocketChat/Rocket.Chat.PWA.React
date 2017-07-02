@@ -15,9 +15,13 @@ import { roomReducer } from "./reducers/roomReducer";
 const URL = "wss://demo.rocket.chat/websocket";
 let realtimeAPI = new RealTimeAPI(URL);
 
-realtimeAPI.onError(err => console.log("Realtime API Error", err));
-realtimeAPI.onCompletion(() => console.log("Realtime API Complete"));
-realtimeAPI.onMessage(msg => console.log(msg));
+realtimeAPI.onError(err => store.dispatch({type: "ADD_ERROR", payload: {reason: "Error"}}));
+realtimeAPI.onMessage(msg => {
+	if(typeof msg.type === "string" && msg.type === "error")
+		store.dispatch({type: "ADD_ERROR", payload: {reason: "Error Connecting to Server"}});
+});
+realtimeAPI.onCompletion(() => store.dispatch({type: "ADD_ERROR", payload: {reason: "Not Connected to Server"}}));
+
 
 realtimeAPI.keepAlive(); // Ping Server
 

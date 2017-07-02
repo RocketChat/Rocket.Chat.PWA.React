@@ -1,12 +1,12 @@
 /* eslint no-console: 0 */
 
-export const errorReducer = function (state = {}, action) {
+export const errorReducer = function (state = [], action) {
 	switch (action.type) {
-	case "LOGIN_ERROR":
-		console.log("ERROR---->", action.payload);
+	case "ADD_ERROR":
+		state = [...state, action.payload];
 		return state;
-	case "ROOM_ERROR":
-		console.log("ERROR---->", action.payload);
+	case "REMOVE_ERROR":
+		state = state.filter( err => action.payload !== err );
 		return state;
 	default:
 		return state;
