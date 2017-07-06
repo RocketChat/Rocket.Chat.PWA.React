@@ -7,37 +7,37 @@ import { loginUser } from "./../../../store/actions/userActions";
 
 class LoginComponent extends Component {
     
+	constructor(props){
+		super(props);
+		this.state = {
+			username: null,
+			password: null
+		};
+	}
+
 	handleFormSubmit(event){
 		event.preventDefault();
-		let username = this.refs["login-form"].username.value;
-		let password = this.refs["login-form"].password.value;
-
-		if(username.trim() === ""){
-			this.refs.username.classList.add("is-invalid");
-		}
-		if(password.trim() === ""){
-			this.refs.password.classList.add("is-invalid");
-			return;
-		}
-		if(username.trim() !== "" && password.trim() !== "")
+		this.setState({
+			username : event.target.username.value,
+			password : event.target.password.value
+		});
+		if(this.state.username !== "" && this.state.username !== null && this.state.password !== "" && this.state.password !== null)
 			this.props.dispatch(loginUser({
-				username: username,
-				password: password,
+				username: this.state.username,
+				password: this.state.password,
 				connection: {
 					isConnected: this.props.connection.isConnected,
 					isLoggedIn: this.props.user.isLoggedIn
 				}
 			}));
-		else
-            return;
 	}
 
 	componentDidMount(){
 		this.refs["login-form"].username.focus();
 	}
 
-	shouldComponentUpdate(){
-		return false;
+	shouldComponentUpdate(nextProps, nextState){
+		return nextState.username !== this.state.username || nextState.password !== this.state.password;
 	}
     
 	render() {
@@ -48,13 +48,13 @@ class LoginComponent extends Component {
                 </div>
                 <div className="mdl-card__supporting-text">
                     <form ref="login-form" action="#" onSubmit={this.handleFormSubmit.bind(this)}>
-                        <div ref="username" className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <div className={"mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty" + (this.state.username === "" ? " is-invalid" : "")}>
                             <input className="mdl-textfield__input" type="text" name="username" id="username"/>
                             <label className="mdl-textfield__label" htmlFor="username">Username</label>
                             <span className="mdl-textfield__error">Enter a Valid Username</span>
 
                         </div>
-                        <div ref="password" className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <div className={"mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty" + (this.state.password === "" ? " is-invalid" : "")}>
                             <input className="mdl-textfield__input" type="password" name="password" id="password"/>
                             <label className="mdl-textfield__label" htmlFor="password">Password</label>
                             <span className="mdl-textfield__error">Enter a Valid Password</span>
@@ -84,4 +84,4 @@ class LoginComponent extends Component {
 	}
 }
 
-export default connect(state => state)(LoginComponent);
+export default connect(state => ({connection: state.connection, user: state.user}))(LoginComponent);
