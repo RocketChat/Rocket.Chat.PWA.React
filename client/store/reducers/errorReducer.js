@@ -6,7 +6,8 @@ export const errorReducer = function (state = [], action) {
 		state = [...state, action.payload];
 		return state;
 	case "REMOVE_ERROR":
-		state = state.filter( err => action.payload !== err );
+		if(action.payload !== undefined)
+			state = state.filter( err => action.payload !== err );
 		return state;
 	default:
 		return state;
