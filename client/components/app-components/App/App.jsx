@@ -26,7 +26,7 @@ class App extends Component {
 		return (
 			<div className="mdl-grid" id="app">
 				<div className="mdl-cell mdl-cell--4-offset-desktop mdl-cell--2-offset-tablet mdl-cell--4-col mdl-cell--middle">
-					<LoginComponent></LoginComponent>
+					<LoginComponent />
 				</div>
 					<ErrorSnackbar></ErrorSnackbar>
 			</div>
