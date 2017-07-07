@@ -39,6 +39,10 @@ class LoginComponent extends Component {
 	shouldComponentUpdate(nextProps, nextState){
 		return nextState.username !== this.state.username || nextState.password !== this.state.password;
 	}
+
+	isValid(element){
+		return this.state[element] === "" ? " is-invalid" : "";
+	}
     
 	render() {
 		return (
@@ -48,14 +52,13 @@ class LoginComponent extends Component {
                 </div>
                 <div className="mdl-card__supporting-text">
                     <form ref="login-form" action="#" onSubmit={this.handleFormSubmit.bind(this)}>
-                        <div className={"mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty" + (this.state.username === "" ? " is-invalid" : "")}>
-                            <input className="mdl-textfield__input" type="text" name="username" id="username"/>
+                        <div className={"mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty" + (this.isValid("username"))}>
+                            <input className="mdl-textfield__input" type="text" name="username" value="test" id="username"/>
                             <label className="mdl-textfield__label" htmlFor="username">Username</label>
                             <span className="mdl-textfield__error">Enter a Valid Username</span>
-
                         </div>
-                        <div className={"mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty" + (this.state.password === "" ? " is-invalid" : "")}>
-                            <input className="mdl-textfield__input" type="password" name="password" id="password"/>
+                        <div className={"mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty" + (this.isValid("password"))}>
+                            <input className="mdl-textfield__input" type="password" name="password" value="test" id="password"/>
                             <label className="mdl-textfield__label" htmlFor="password">Password</label>
                             <span className="mdl-textfield__error">Enter a Valid Password</span>
                         </div>
