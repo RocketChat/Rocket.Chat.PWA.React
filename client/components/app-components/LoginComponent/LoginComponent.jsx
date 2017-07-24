@@ -1,13 +1,12 @@
 import React, { Component } from "react";
-import "./LoginComponent.sass";
 
 import { connect } from "react-redux";
 
 import { loginUser } from "./../../../store/actions/userActions";
 
 class LoginComponent extends Component {
-    
-	constructor(props){
+
+	constructor(props) {
 		super(props);
 		this.state = {
 			username: null,
@@ -15,35 +14,38 @@ class LoginComponent extends Component {
 		};
 	}
 
-	handleFormSubmit(event){
+	handleFormSubmit(event) {
 		event.preventDefault();
 		this.setState({
-			username : event.target.username.value,
-			password : event.target.password.value
+			username: event.target.username.value,
+			password: event.target.password.value
 		});
-		if(this.state.username !== "" && this.state.username !== null && this.state.password !== "" && this.state.password !== null)
+		if (event.target.username.value !== "" && event.target.password.value !== "")
 			this.props.dispatch(loginUser({
-				username: this.state.username,
-				password: this.state.password,
-				connection: {
-					isConnected: this.props.connection.isConnected,
-					isLoggedIn: this.props.user.isLoggedIn
-				}
+				username: event.target.username.value,
+				password: event.target.password.value
 			}));
 	}
 
-	componentDidMount(){
+	componentDidMount() {
 		this.refs["login-form"].username.focus();
 	}
 
-	shouldComponentUpdate(nextProps, nextState){
+	shouldComponentUpdate(nextProps, nextState) {
 		return nextState.username !== this.state.username || nextState.password !== this.state.password;
 	}
 
-	isValid(element){
+	isValid(element) {
 		return this.state[element] === "" ? " is-invalid" : "";
 	}
-    
+
+	handleInputChange(event) {
+		this.setState({
+			...this.state,
+			[event.target.name]: event.target.value
+		});
+	}
+
 	render() {
 		return (
             <div className="mdl-card mdl-shadow--4dp login">
@@ -51,14 +53,14 @@ class LoginComponent extends Component {
                     <h2 className="mdl-card__title-text">Login</h2>
                 </div>
                 <div className="mdl-card__supporting-text">
-                    <form ref="login-form" action="#" onSubmit={this.handleFormSubmit.bind(this)}>
+                    <form method="post" ref="login-form" action="#" onSubmit={this.handleFormSubmit.bind(this)}>
                         <div className={"mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty" + (this.isValid("username"))}>
-                            <input className="mdl-textfield__input" type="text" name="username" value="test" id="username"/>
+                            <input onChange={this.handleInputChange.bind(this)} className="mdl-textfield__input" type="text" name="username" id="username" />
                             <label className="mdl-textfield__label" htmlFor="username">Username</label>
                             <span className="mdl-textfield__error">Enter a Valid Username</span>
                         </div>
                         <div className={"mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-dirty" + (this.isValid("password"))}>
-                            <input className="mdl-textfield__input" type="password" name="password" value="test" id="password"/>
+                            <input onChange={this.handleInputChange.bind(this)} className="mdl-textfield__input" type="password" name="password" id="password" />
                             <label className="mdl-textfield__label" htmlFor="password">Password</label>
                             <span className="mdl-textfield__error">Enter a Valid Password</span>
                         </div>
@@ -87,4 +89,4 @@ class LoginComponent extends Component {
 	}
 }
 
-export default connect(state => ({connection: state.connection, user: state.user}))(LoginComponent);
+export default connect(state => ({ user: state.user }))(LoginComponent);

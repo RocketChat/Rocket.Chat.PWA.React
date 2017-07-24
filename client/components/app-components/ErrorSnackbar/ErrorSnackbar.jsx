@@ -2,27 +2,34 @@ import React, { Component } from "react";
 
 import { connect } from "react-redux";
 
+import { removeError } from "./../../../store/actions/errorActions";
 
 class ErrorSnackbar extends Component {
+
 	constructor(props){
 		super(props);
-		this.state = {error: props.error[props.error.length - 1]};
+		this.state = {error: props.error[0]};
 	}
+
 	shouldComponentUpdate(nextProp, nextState){
 		return nextProp.error !== this.props.error || this.state.error !== nextState.error;
 	}
+
 	componentWillUpdate(nextProp, nextState){
-		this.setState({ error : nextProp.error[nextProp.error.length - 1] });
+		this.setState({ error : nextProp.error[0] });
 		return  nextProp.error !== this.props.error || this.state.error !== nextState.error && this.state.error !== undefined;
 	}
+
 	componentDidUpdate(){
 		if(this.state.error !== undefined)
 			setTimeout(
 			() => {
-				this.props.dispatch({type: "REMOVE_ERROR", payload: this.state.error});
-				this.setState({ error : this.props.error[this.props.error.length - 1] });
+				this.props.dispatch(removeError(this.state.error));
+				this.setState({ error : this.props.error[0] });
 			},2750);
+
 	}
+
 	isActive(){
 		return this.state.error === undefined ? "" : " mdl-snackbar--active";  
 	}
@@ -30,6 +37,7 @@ class ErrorSnackbar extends Component {
 	getReason(){
 		return this.state.error ? this.state.error.reason : "";
 	}
+
 	render() {
 		return (
             <div ref="err-snackbar" id="err-snackbar" className={"mdl-snackbar" + this.isActive()}>

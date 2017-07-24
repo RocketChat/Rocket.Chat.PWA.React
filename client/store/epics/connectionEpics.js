@@ -6,7 +6,7 @@ import { connectionEstablished } from "./../actions/connectionActions";
 export const initConnection = (action$, store, { realtimeAPI }) =>
 	action$.ofType(INIT_CONNECTION)
 		.mergeMap(action => {
-			if (!action.payload.connection.isConnected)
+			if (!store.getState().connection.isConnected)
 				return realtimeAPI.connectToServer();
 		})
 		.map(msg => {

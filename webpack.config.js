@@ -148,7 +148,7 @@ module.exports = {
 	devServer: {
 		contentBase: "./client",
 		historyApiFallback: true,
-		port: 3000,
+		port: 3003,
 		hot: true,
 		compress: isProd,
 		stats: { colors: true },

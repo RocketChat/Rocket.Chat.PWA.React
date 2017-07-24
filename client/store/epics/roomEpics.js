@@ -7,7 +7,7 @@ import { storeRooms } from "./../actions/roomActions";
 export const getRooms = (action$, store, { realtimeAPI }) =>
 	action$.ofType(GET_ROOMS)
 		.mergeMap(action => {
-			if (action.payload.connection.isConnected && action.payload.connection.isLoggedIn)
+			if (store.getState().connection.isConnected && store.getState().user.isLoggedIn)
 				return realtimeAPI.callMethod("rooms/get", [{ "$date": Date.now() / 1000 }]);
 			else
 				return Observable.of({ msg: "error", error: "Not Loggedin or Not Connected to Server" });
@@ -16,6 +16,6 @@ export const getRooms = (action$, store, { realtimeAPI }) =>
 			case "result":
 				return storeRooms(msg.result);
 			default:
-				return ({ type: "ROOM_ERROR", payload: msg.error });
+				return ({ type: "ADD_ERROR", payload: msg.error });
 			}
 		});

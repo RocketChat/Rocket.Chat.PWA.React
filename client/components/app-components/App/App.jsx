@@ -1,35 +1,35 @@
 import React, { Component } from "react";
-import "./App.sass";
 import { connect } from "react-redux";
 
-import { initConnection } from "./../../../store/actions/connectionActions";
+import Layout from "./../../util-components/Layout";
+import Content from "./../../util-components/Content";
 
-import LoginComponent from "./../LoginComponent/LoginComponent";
+import Drawer from "./../Drawer/Drawer";
+import Header from "./../Header/Header";
 import ErrorSnackbar from "./../ErrorSnackbar/ErrorSnackbar";
+import { getRooms } from "./../../../store/actions/roomActions";
 
 class App extends Component {
 
+
+	componentWillMount() {
+		this.props.dispatch(getRooms());
+	}
+
 	componentDidMount() {
-		if (!this.props.connection.isConnected)
-			this.props.dispatch(initConnection({
-				connection: {
-					isConnected: this.props.connection.isConnected
-				}
-			}));
+		componentHandler.upgradeDom();
 	}
-
-	shouldComponentUpdate(){
-		return false;
-	}
-
+    
 	render() {
 		return (
-			<div className="mdl-grid" id="app">
-				<div className="mdl-cell mdl-cell--4-offset-desktop mdl-cell--2-offset-tablet mdl-cell--4-col mdl-cell--middle">
-					<LoginComponent />
-				</div>
-					<ErrorSnackbar></ErrorSnackbar>
-			</div>
+            <Layout class="mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+				<Drawer {...this.props} />
+				<Header />
+				<Content class="mdl-color--white">
+					<p className="mdl-cell">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic vel, quisquam cupiditate est vitae, quaerat non molestias veritatis voluptate facilis rerum illum id praesentium eligendi impedit nam minus reprehenderit error.</p>
+				</Content>
+				<ErrorSnackbar />
+			</Layout>
 		);
 	}
 }

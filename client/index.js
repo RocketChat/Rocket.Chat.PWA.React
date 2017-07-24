@@ -3,7 +3,7 @@ import { render } from "react-dom";
 import { BrowserRouter, Route } from "react-router-dom";
 import { Observable } from "rxjs";
 import store from "./store/configStore";
-import App from "./components/app-components/App/App";
+import Index from "./components/app-components/Index/Index";
 import { Provider } from "react-redux";
 
 import "material-design-lite";
@@ -12,7 +12,7 @@ import "./styles/global-styles.sass";
 const application = (
 	<Provider store={store}>
 		<BrowserRouter>
-			<Route path="/" component={App}></Route>
+			<Route component={Index}></Route>
 		</BrowserRouter>
 	</Provider>
 );
