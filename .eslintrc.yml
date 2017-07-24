@@ -25,5 +25,5 @@ rules:
     - always
   no-unused-vars:
     - off
-  
-
+globals: 
+  componentHandler : true #MaterialDesignLite Global
