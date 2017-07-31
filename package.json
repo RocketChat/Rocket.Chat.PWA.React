@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
+    "babel-eslint": "7",
     "babel-loader": "^7.0.0",
     "babel-plugin-dynamic-import-webpack": "^1.0.1",
     "babel-plugin-transform-class-properties": "^6.24.1",
