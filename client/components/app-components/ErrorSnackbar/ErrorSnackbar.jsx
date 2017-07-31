@@ -8,8 +8,10 @@ class ErrorSnackbar extends Component {
 
 	constructor(props){
 		super(props);
-		this.state = {error: props.error[0]};
+		this.state = {error: props.error[0], timeoutHandler:null};
 	}
+
+	timeoutHandler = null;
 
 	shouldComponentUpdate(nextProp, nextState){
 		return nextProp.error !== this.props.error || this.state.error !== nextState.error;
@@ -22,12 +24,16 @@ class ErrorSnackbar extends Component {
 
 	componentDidUpdate(){
 		if(this.state.error !== undefined)
-			setTimeout(
+			this.timeoutHandler = setTimeout(
 			() => {
 				this.props.dispatch(removeError(this.state.error));
 				this.setState({ error : this.props.error[0] });
 			},2750);
+	}
 
+	componentWillUnmount(){
+		clearTimeout(this.timeoutHandler);
+		this.setState({ error : this.props.error[0] })
 	}
 
 	isActive(){
