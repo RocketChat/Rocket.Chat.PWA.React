@@ -33,7 +33,7 @@ class ErrorSnackbar extends Component {
 
 	componentWillUnmount(){
 		clearTimeout(this.timeoutHandler);
-		this.setState({ error : this.props.error[0] })
+		this.setState({ error : this.props.error[0] });
 	}
 
 	isActive(){
