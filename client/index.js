@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
 import { store, history } from "./store/configStore";
-import Index from "./components/app-components/Index/Index";
+import Index from "@components/Index/Index";
 import { Provider } from "react-redux";
 import { ConnectedRouter, routerReducer, routerMiddleware, push } from "react-router-redux";
 
