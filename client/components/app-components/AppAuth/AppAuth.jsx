@@ -21,6 +21,7 @@ class AppAuth extends Component {
                         <LoginComponent />
                     </div>
                 </Content>
+                <ErrorSnackbar/>
             </Layout>
 		);
 	}

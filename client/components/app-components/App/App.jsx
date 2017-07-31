@@ -36,6 +36,7 @@ class App extends Component {
 						<Route component={WelcomeScreen} />
 					</Switch>
 				</Content>
+				<ErrorSnackbar/>
 			</Layout>
 		);
 	}
