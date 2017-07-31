@@ -1,19 +1,8 @@
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
+import { connect } from "react-redux";
 
 class Drawer extends Component {
-
-	constructor(props) {
-		super(props);
-		this.state = {
-			rooms: props.rooms ? props.rooms : []
-		};
-	}
-
-	componentWillUpdate(nextProps) {
-		if (this.props != nextProps)
-			this.setState({ rooms: nextProps.rooms });
-		return this.props != nextProps;
-	}
 
 	componentDidMount() {
 		componentHandler.upgradeDom();
@@ -24,11 +13,11 @@ class Drawer extends Component {
 			<div className="mdl-layout__drawer">
 				<span className="mdl-layout-title">Title</span>
 				<nav className="mdl-navigation">
-					{this.state.rooms.map(room => <a key={room._id} className="mdl-navigation__link" href="">{room.name || "room"}</a>)}
+					{this.props.subscriptions.map(subscription => <NavLink to={"/chat/"+subscription.name} key={subscription.name} className="mdl-navigation__link">{subscription.name || "room"}</NavLink>)}
 				</nav>
 			</div>
 		);
 	}
 }
 
-export default Drawer;
+export default connect(state => state)(Drawer);

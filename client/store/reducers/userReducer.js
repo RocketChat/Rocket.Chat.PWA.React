@@ -1,4 +1,4 @@
-import { STORE_LOGIN_INFO, STORE_USER_INFO } from "./../actions/actionNames";
+import { STORE_LOGIN_INFO, STORE_USER_INFO } from "@actions/actionNames";
 
 export const userReducer = function (state = { isLoggedIn: false }, action) {
 	switch (action.type) {

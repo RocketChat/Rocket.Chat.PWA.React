@@ -1,8 +1,8 @@
 import { Observable } from "rxjs";
-import { LOGIN } from "./../../actions/actionNames";
+import { LOGIN } from "@actions/actionNames";
 
-import { storeLoginInfo, storeUserInfo } from "./../../actions/userActions";
-import { addError } from "./../../actions/errorActions";
+import { storeLoginInfo, storeUserInfo } from "@actions/userActions";
+import { addError } from "@actions/errorActions";
 
 // Epic to Login to the Server.
 export const loginUser = (action$, store, { realtimeAPI }) =>

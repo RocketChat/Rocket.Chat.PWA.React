@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
-import Layout from "./../../util-components/Layout";
-import Content from "./../../util-components/Content";
+import Layout from "@utils/Layout";
+import Content from "@utils/Content";
 
-import LoginComponent from "./../LoginComponent/LoginComponent";
-import ErrorSnackbar from "./../ErrorSnackbar/ErrorSnackbar";
+import LoginComponent from "@components/LoginComponent/LoginComponent";
+import ErrorSnackbar from "@components/ErrorSnackbar/ErrorSnackbar";
 
 
 class AppAuth extends Component {
@@ -21,7 +21,6 @@ class AppAuth extends Component {
                         <LoginComponent />
                     </div>
                 </Content>
-                <ErrorSnackbar />
             </Layout>
 		);
 	}

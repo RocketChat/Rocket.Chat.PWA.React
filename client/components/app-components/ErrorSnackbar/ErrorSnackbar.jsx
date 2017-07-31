@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { connect } from "react-redux";
 
-import { removeError } from "./../../../store/actions/errorActions";
+import { removeError } from "@actions/errorActions";
 
 class ErrorSnackbar extends Component {
 

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { connect } from "react-redux";
 
-import { loginUser } from "./../../../store/actions/userActions";
+import { loginUser } from "@actions/userActions";
 
 class LoginComponent extends Component {
 

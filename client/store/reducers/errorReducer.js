@@ -1,4 +1,4 @@
-import { ADD_ERROR, REMOVE_ERROR } from "./../actions/actionNames";
+import { ADD_ERROR, REMOVE_ERROR } from "@actions/actionNames";
 
 export const errorReducer = function (state = [], action) {
 	switch (action.type) {

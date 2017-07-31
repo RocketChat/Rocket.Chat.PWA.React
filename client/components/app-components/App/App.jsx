@@ -1,19 +1,23 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Switch, Route, withRouter } from "react-router-dom";
 
-import Layout from "./../../util-components/Layout";
-import Content from "./../../util-components/Content";
+import Layout from "@utils/Layout";
+import Content from "@utils/Content";
 
-import Drawer from "./../Drawer/Drawer";
-import Header from "./../Header/Header";
-import ErrorSnackbar from "./../ErrorSnackbar/ErrorSnackbar";
-import { getRooms } from "./../../../store/actions/roomActions";
+import Drawer from "@components/Drawer/Drawer";
+import Header from "@components/Header/Header";
+import ErrorSnackbar from "@components/ErrorSnackbar/ErrorSnackbar";
+import Chat from "@components/Chat/Chat";
+import WelcomeScreen from "@components/WelcomeScreen/WelcomeScreen";
+
+import { getSubscriptions } from "@actions/subscriptionActions";
 
 class App extends Component {
 
 
 	componentWillMount() {
-		this.props.dispatch(getRooms());
+		this.props.dispatch(getSubscriptions());
 	}
 
 	componentDidMount() {
@@ -23,12 +27,15 @@ class App extends Component {
 	render() {
 		return (
             <Layout class="mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-				<Drawer {...this.props} />
+				<Drawer />
 				<Header />
 				<Content class="mdl-color--white">
-					<p className="mdl-cell">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic vel, quisquam cupiditate est vitae, quaerat non molestias veritatis voluptate facilis rerum illum id praesentium eligendi impedit nam minus reprehenderit error.</p>
+					<Switch>
+						<Route exact path="/" component={WelcomeScreen} />
+						<Route path={"/chat/:channelName"} component={Chat} />
+						<Route component={WelcomeScreen} />
+					</Switch>
 				</Content>
-				<ErrorSnackbar />
 			</Layout>
 		);
 	}

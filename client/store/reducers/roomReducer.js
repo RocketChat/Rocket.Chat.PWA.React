@@ -1,4 +1,4 @@
-import { STORE_ROOMS } from "./../actions/actionNames";
+import { STORE_ROOMS } from "@actions/actionNames";
 
 export const roomReducer = function (state = [], action) {
 	switch (action.type) {

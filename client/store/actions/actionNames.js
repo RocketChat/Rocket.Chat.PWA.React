@@ -7,3 +7,5 @@ export const GET_ROOMS = "GET_ROOMS";
 export const STORE_ROOMS = "STORE_ROOMS";
 export const ADD_ERROR = "ADD_ERROR";
 export const REMOVE_ERROR = "REMOVE_ERROR";
+export const STORE_SUBS = "STORE_SUBS";
+export const GET_SUBS = "GET_SUBS";
