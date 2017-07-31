@@ -14,6 +14,8 @@ const staticsPath = path.join(__dirname, "./static");
 
 const extractCSS = new ExtractTextPlugin({ filename: "style.css", disable: false, allChunks: true });
 
+const resolve = (dir) => path.join(__dirname,dir);
+
 const plugins = [
 	new webpack.optimize.CommonsChunkPlugin({
 		name: "vendor",
@@ -142,13 +144,20 @@ module.exports = {
 		modules: [
 			sourcePath,
 			"node_modules"
-		]
+		],
+		alias: {
+			"@components": resolve("client/components/app-components/"),
+			"@utils": resolve("client/components/util-components/"),
+			"@actions": resolve("client/store/actions"),
+			"@epics": resolve("client/store/epics"),
+			"@store": resolve("client/store/")
+		}
 	},
 	plugins: plugins,
 	devServer: {
 		contentBase: "./client",
 		historyApiFallback: true,
-		port: 3003,
+		port: 3000,
 		hot: true,
 		compress: isProd,
 		stats: { colors: true },
