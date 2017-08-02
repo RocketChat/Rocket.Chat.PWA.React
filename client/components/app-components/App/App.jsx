@@ -32,7 +32,7 @@ class App extends Component {
 				<Content class="mdl-color--white">
 					<Switch>
 						<Route exact path="/" component={WelcomeScreen} />
-						<Route path={"/chat/:channelName"} component={Chat} />
+						<Route path="/chat/:channelName" component={Chat} />
 						<Route component={WelcomeScreen} />
 					</Switch>
 				</Content>
@@ -42,4 +42,4 @@ class App extends Component {
 	}
 }
 
-export default connect(state => state)(App);
+export default withRouter(connect(state => state)(App));

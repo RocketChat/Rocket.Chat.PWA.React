@@ -5,16 +5,11 @@ import { createEpicMiddleware } from "redux-observable";
 import { webSocket } from "rxjs/observable/dom/webSocket";
 import { Observable } from "rxjs";
 import { RealTimeAPI } from "rocket.chat.realtime.api.rxjs";
-import createHistory from "history/createBrowserHistory";
-import { ConnectedRouter, routerReducer, routerMiddleware, push } from "react-router-redux";
-
-
 
 
 import epics from "./epics/combinedEpics";
 import reducers from "./reducers/combinedReducers";
 
-export const history = createHistory();
 
 const URL = "wss://demo.rocket.chat/websocket";
 let realtimeAPI = new RealTimeAPI(URL);
@@ -29,7 +24,6 @@ realtimeAPI.onCompletion(() => store.dispatch({ type: "ADD_ERROR", payload: { re
 
 realtimeAPI.keepAlive(); // Ping Server
 
-const routeMiddleware = routerMiddleware(history)
 
 const epicMiddleware = createEpicMiddleware(epics, {
 	dependencies: {
@@ -37,5 +31,5 @@ const epicMiddleware = createEpicMiddleware(epics, {
 	}
 });
 
-export const store = createStore(reducers, applyMiddleware(epicMiddleware, routeMiddleware));
+export const store = createStore(reducers, applyMiddleware(epicMiddleware));
 

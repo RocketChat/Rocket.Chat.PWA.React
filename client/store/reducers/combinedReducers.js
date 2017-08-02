@@ -5,7 +5,6 @@ import { userReducer } from "./userReducer";
 import { errorReducer } from "./errorReducer";
 import { roomReducer } from "./roomReducer";
 import { subscriptionReducer } from "./subscriptionReducer";
-import { routerReducer } from "react-router-redux";
 
 
 
@@ -14,6 +13,5 @@ export default combineReducers({
 	user: userReducer,
 	error: errorReducer,
 	rooms: roomReducer,
-	subscriptions: subscriptionReducer,
-	routing: routerReducer
+	subscriptions: subscriptionReducer
 });
