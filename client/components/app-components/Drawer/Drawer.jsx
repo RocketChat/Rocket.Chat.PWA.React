@@ -13,7 +13,10 @@ class Drawer extends Component {
 			<div className="mdl-layout__drawer">
 				<span className="mdl-layout-title">Title</span>
 				<nav className="mdl-navigation">
-					{this.props.subscriptions.map(subscription => <NavLink to={"/chat/"+subscription.name} key={subscription.name} className="mdl-navigation__link">{subscription.name || "room"}</NavLink>)}
+					{this.props.subscriptions.map(subscription => <NavLink to={{
+						pathname: "/chat/"+subscription.name,
+						state: { ...subscription }
+					}}  key={subscription.name} replace className="mdl-navigation__link">{subscription.name || "room"}</NavLink>)}
 				</nav>
 			</div>
 		);
