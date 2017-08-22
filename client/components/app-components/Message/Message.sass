@@ -1,0 +1,19 @@
+.message
+    display: block
+    margin: 4px 8px
+    .message-text
+        max-width: 80%
+        padding: 8px
+        border-radius: 3px
+        border: 1px solid transparentize(grey,0.9)
+        box-shadow: 2px 2px 5px transparentize(grey,0.7)
+
+.message.sent
+    .message-text
+        float: right
+        background: #BBDEFB
+
+.message.received
+    .message-text
+        float: left
+        background: #CFD8DC

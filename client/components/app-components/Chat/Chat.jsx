@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import ChatInput from "@components/ChatInput/ChatInput";
+import Message from "@components/Message/Message";
 import { subscribeToRoom } from "@actions/roomActions";
 
 class Chat extends Component {
@@ -35,9 +36,17 @@ class Chat extends Component {
 	}
 	render() {
 		return (
-			<div>
-                Chat {this.props.match.params.channelName || "No Room"}
-				{JSON.stringify(this.state.lastestMessages)}
+			<div className="chat">
+                <div className="message-container">
+					<Message type="sent">
+						Chat1 {this.props.match.params.channelName || "No Room"}
+						{JSON.stringify(this.state.lastestMessages)}
+					</Message>
+					<Message type="received">
+						Chat2 {this.props.match.params.channelName || "No Room"}
+						{JSON.stringify(this.state.lastestMessages)}
+					</Message>
+				</div>
 				<ChatInput />	
 			</div>
 		);
