@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class Header extends Component {
 	componentDidMount(){
@@ -8,6 +9,7 @@ class Header extends Component {
 		return (
 			<header className="mdl-layout__header mdl-color--primary">
 				<div className="mdl-layout__header-row">
+					{this.props.children}
 				</div>
 			</header>
 		);
