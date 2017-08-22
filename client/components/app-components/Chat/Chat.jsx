@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+
+import ChatInput from "@components/ChatInput/ChatInput";
 import { subscribeToRoom } from "@actions/roomActions";
 
 class Chat extends Component {
@@ -36,6 +38,7 @@ class Chat extends Component {
 			<div>
                 Chat {this.props.match.params.channelName || "No Room"}
 				{JSON.stringify(this.state.lastestMessages)}
+				<ChatInput />	
 			</div>
 		);
 	}
