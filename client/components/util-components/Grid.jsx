@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 
 const Grid = props => {
 	return (
-        <div className="mdl-grid">
-            {props.children}
-        </div>
+		<div className="mdl-grid">
+			{props.children}
+		</div>
 	);
 };
 

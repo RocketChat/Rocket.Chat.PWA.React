@@ -33,7 +33,7 @@ class LazyLoad extends Component {
 		if(this.state.mod)
 			return this.props.children(this.state.mod);
 		else
-        return null;
+			return null;
 	}
 }
 

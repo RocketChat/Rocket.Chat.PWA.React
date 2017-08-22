@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 
 const Layout = props => {
 	return (
-        <div className={"mdl-layout " + props.class}>
-            {props.children}
-        </div>
+		<div className={"mdl-layout " + props.class}>
+			{props.children}
+		</div>
 	);
 };
 
