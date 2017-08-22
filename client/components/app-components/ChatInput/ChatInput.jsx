@@ -2,6 +2,10 @@ import React, { Component } from "react";
 
 class ChatInput extends Component {
 
+	componentDidMount() {
+		componentHandler.upgradeDom();
+	}
+
 	render() {
 		return (
             <div className="chatinput mdl-color--white mdl-shadow--2dp">
