@@ -5,6 +5,7 @@ class Message extends Component {
     render() {
         return (
             <div className={"message " + this.props.type}>
+                <div className="tail"/>   
                 <div className="message-text">{this.props.children}</div>
             </div>
         );
