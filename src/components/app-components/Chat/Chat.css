@@ -1,0 +1,10 @@
+.chat {
+  overflow-y: auto;
+  padding: 0;
+  margin: 0;
+  width: initial; }
+  .chat .message-container {
+    padding: 16px 5%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column; }

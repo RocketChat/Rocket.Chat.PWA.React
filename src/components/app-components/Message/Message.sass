@@ -1,0 +1,35 @@
+.message
+    display: block
+    margin: 4px 8px
+    .message-text
+        max-width: 70%
+        padding: 8px
+        border-radius: 3px
+        border: 1px solid transparentize(grey,0.9)
+        box-shadow: 2px 2px 5px transparentize(grey,0.7)
+    .tail
+        height: 10px
+        width: 15px    
+
+.message.sent
+    .message-text
+        float: right
+        background: #BBDEFB
+    .tail
+        background: #BBDEFB
+        border-bottom-right-radius: 15px
+        margin-left: -10px
+        transform: translate(0,0px)
+        float: right
+    
+.message.received
+    .message-text
+        // float: left
+        background: #CFD8DC
+    .tail
+        background: #CFD8DC
+        border-bottom-left-radius: 15px
+        border-top-left-radius: 0px
+        margin-left: -5px
+        margin-top: -10px
+        transform: translate(0,10px)
