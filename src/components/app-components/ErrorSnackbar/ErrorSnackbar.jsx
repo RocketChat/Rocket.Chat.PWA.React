@@ -8,7 +8,7 @@ class ErrorSnackbar extends Component {
 
 	constructor(props){
 		super(props);
-		this.state = {error: props.error[0], timeoutHandler:null};
+		this.state = {error: props.error[0]};
 	}
 
 	timeoutHandler = null;
@@ -48,7 +48,6 @@ class ErrorSnackbar extends Component {
 		return (
             <div ref="err-snackbar" id="err-snackbar" className={"mdl-snackbar" + this.isActive()}>
                 <div ref="err-text" className="mdl-snackbar__text">{this.getReason()}</div>
-                <button className="mdl-snackbar__action" type="button"></button>
             </div>
 		);
 	}
