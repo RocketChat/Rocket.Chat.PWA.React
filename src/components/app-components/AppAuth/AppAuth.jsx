@@ -4,7 +4,6 @@ import Layout from "@utils/Layout";
 import Content from "@utils/Content";
 
 import LoginComponent from "@components/LoginComponent/LoginComponent";
-import ErrorSnackbar from "@components/ErrorSnackbar/ErrorSnackbar";
 
 
 class AppAuth extends Component {
@@ -21,7 +20,6 @@ class AppAuth extends Component {
                         <LoginComponent />
                     </div>
                 </Content>
-                <ErrorSnackbar/>
             </Layout>
 		);
 	}
