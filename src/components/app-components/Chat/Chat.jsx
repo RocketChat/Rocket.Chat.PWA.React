@@ -50,60 +50,6 @@ class Chat extends Component {
 						Chat111111111111111111 {this.props.match.params.channelName || "No Room"}
 						{JSON.stringify(this.state.lastestMessages)}
 					</Message>
-					<Message type="received">
-						Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo nam consequatur, soluta nulla dolore quia quo quaerat eum aperiam. Vel in sint mollitia sequi ad ab ex doloribus accusamus qui!
-					</Message>
-					<Message type="sent">
-						Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo nam consequatur, soluta nulla dolore quia quo quaerat eum aperiam. Vel in sint mollitia sequi ad ab ex doloribus accusamus qui!
-					</Message>
-					<Message type="received">
-						Chat1 gsoc-pwa[["hyhhh"],["bmi.calculator"],["bmi.calculator"],["bmi.calculator"],["bmi.calculator"],["bmi.calculator"],["bmi.calculator"],["bmi.calculator"],["bmi.calculator"],["@catbot hello"],["@catbot hello"],["catbot"],[":thinking: "],[":thinking: "],["desculpe, não entendi.. pode tentar usar mais detalhes"],["desculpe, não entendi.. pode tentar usar mais detalhes"],["desculpe, não entendi.. pode tentar usar mais detalhes"],["@catbot help"],["@catbot help"],["acho que não estou treinado para responder esse tipo de assunto =("],["acho que não estou treinado para responder esse tipo de assunto =("],["catbot"],[":joy: "],[":joy: "]]
-					</Message>
-					<Message type="received">
-						Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo nam consequatur, soluta nulla dolore quia quo quaerat eum aperiam. Vel in sint mollitia sequi ad ab ex doloribus accusamus qui!
-					</Message>
-					<Message type="sent">
-						Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo nam consequatur, soluta nulla dolore quia quo quaerat eum aperiam. Vel in sint mollitia sequi ad ab ex doloribus accusamus qui!
-					</Message>
-					<Message type="received">
-						Chat1 gsoc-pwa[["hyhhh"],["bmi.calculator"],["bmi.calculator"],["bmi.calculator"],["bmi.calculator"],["bmi.calculator"],["bmi.calculator"],["bmi.calculator"],["bmi.calculator"],["@catbot hello"],["@catbot hello"],["catbot"],[":thinking: "],[":thinking: "],["desculpe, não entendi.. pode tentar usar mais detalhes"],["desculpe, não entendi.. pode tentar usar mais detalhes"],["desculpe, não entendi.. pode tentar usar mais detalhes"],["@catbot help"],["@catbot help"],["acho que não estou treinado para responder esse tipo de assunto =("],["acho que não estou treinado para responder esse tipo de assunto =("],["catbot"],[":joy: "],[":joy: "]]
-					</Message>
-					<Message type="received">
-						Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo nam consequatur, soluta nulla dolore quia quo quaerat eum aperiam. Vel in sint mollitia sequi ad ab ex doloribus accusamus qui!
-					</Message>
-					<Message type="sent">
-						Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo nam consequatur, soluta nulla dolore quia quo quaerat eum aperiam. Vel in sint mollitia sequi ad ab ex doloribus accusamus qui!
-					</Message>
-					<Message type="received">
-						Chat1 gsoc-pwa[["hyhhh"],["bmi.calculator"],["bmi.calculator"],["bmi.calculator"],["bmi.calculator"],["bmi.calculator"],["bmi.calculator"],["bmi.calculator"],["bmi.calculator"],["@catbot hello"],["@catbot hello"],["catbot"],[":thinking: "],[":thinking: "],["desculpe, não entendi.. pode tentar usar mais detalhes"],["desculpe, não entendi.. pode tentar usar mais detalhes"],["desculpe, não entendi.. pode tentar usar mais detalhes"],["@catbot help"],["@catbot help"],["acho que não estou treinado para responder esse tipo de assunto =("],["acho que não estou treinado para responder esse tipo de assunto =("],["catbot"],[":joy: "],[":joy: "]]
-					</Message>
-					<Message type="received">
-						Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo nam consequatur, soluta nulla dolore quia quo quaerat eum aperiam. Vel in sint mollitia sequi ad ab ex doloribus accusamus qui!
-					</Message>
-					<Message type="sent">
-						Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo nam consequatur, soluta nulla dolore quia quo quaerat eum aperiam. Vel in sint mollitia sequi ad ab ex doloribus accusamus qui!
-					</Message>
-					<Message type="received">
-						Chat1 gsoc-pwa[["hyhhh"],["bmi.calculator"],["bmi.calculator"],["bmi.calculator"],["bmi.calculator"],["bmi.calculator"],["bmi.calculator"],["bmi.calculator"],["bmi.calculator"],["@catbot hello"],["@catbot hello"],["catbot"],[":thinking: "],[":thinking: "],["desculpe, não entendi.. pode tentar usar mais detalhes"],["desculpe, não entendi.. pode tentar usar mais detalhes"],["desculpe, não entendi.. pode tentar usar mais detalhes"],["@catbot help"],["@catbot help"],["acho que não estou treinado para responder esse tipo de assunto =("],["acho que não estou treinado para responder esse tipo de assunto =("],["catbot"],[":joy: "],[":joy: "]]
-					</Message>
-					<Message type="received">
-						Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo nam consequatur, soluta nulla dolore quia quo quaerat eum aperiam. Vel in sint mollitia sequi ad ab ex doloribus accusamus qui!
-					</Message>
-					<Message type="sent">
-						Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo nam consequatur, soluta nulla dolore quia quo quaerat eum aperiam. Vel in sint mollitia sequi ad ab ex doloribus accusamus qui!
-					</Message>
-					<Message type="received">
-						Chat1 gsoc-pwa[["hyhhh"],["bmi.calculator"],["bmi.calculator"],["bmi.calculator"],["bmi.calculator"],["bmi.calculator"],["bmi.calculator"],["bmi.calculator"],["bmi.calculator"],["@catbot hello"],["@catbot hello"],["catbot"],[":thinking: "],[":thinking: "],["desculpe, não entendi.. pode tentar usar mais detalhes"],["desculpe, não entendi.. pode tentar usar mais detalhes"],["desculpe, não entendi.. pode tentar usar mais detalhes"],["@catbot help"],["@catbot help"],["acho que não estou treinado para responder esse tipo de assunto =("],["acho que não estou treinado para responder esse tipo de assunto =("],["catbot"],[":joy: "],[":joy: "]]
-					</Message>
-					<Message type="received">
-						Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo nam consequatur, soluta nulla dolore quia quo quaerat eum aperiam. Vel in sint mollitia sequi ad ab ex doloribus accusamus qui!
-					</Message>
-					<Message type="sent">
-						Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo nam consequatur, soluta nulla dolore quia quo quaerat eum aperiam. Vel in sint mollitia sequi ad ab ex doloribus accusamus qui!
-					</Message>
-					<Message type="received">
-						Lasssssssssssssssssssst
-					</Message>
 				</div>
 				<ChatInput />	
 			</div>

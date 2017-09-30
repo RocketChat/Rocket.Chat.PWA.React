@@ -20,7 +20,7 @@ class ChatInput extends Component {
                 </div>
                 <form className="chatinput__message-input">
                     <div className="mdl-textfield mdl-js-textfield mdl-border">
-                        <input autoComplete={false} autoSave={false} className="mdl-textfield__input" type="text" id="message" />
+                        <input className="mdl-textfield__input" type="text" id="message" />
                         <label className="mdl-textfield__label" htmlFor="message">Your Message</label>
                     </div>
                     <button className="mdl-button mdl-js-button mdl-button--icon"><i className="material-icons">send</i></button>
