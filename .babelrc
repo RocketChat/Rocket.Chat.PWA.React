@@ -1,4 +1,0 @@
-{
-  "presets": ["stage-2","react",["es2015", { "modules": false }]],
-  "plugins": ["dynamic-import-webpack"]
-}

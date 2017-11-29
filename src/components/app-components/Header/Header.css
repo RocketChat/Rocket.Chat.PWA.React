@@ -1,0 +1,9 @@
+.login {
+  width: initial !important; }
+  .login .mdl-card__actions {
+    display: flex;
+    align-items: center; }
+  .login form {
+    text-align: center; }
+  .login form > div {
+    text-align: left; }

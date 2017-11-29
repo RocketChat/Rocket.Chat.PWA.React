@@ -1,0 +1,23 @@
+.chatinput {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border-top: 1px solid #ccc; }
+  .chatinput__action-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px 0 15px; }
+    .chatinput__action-container .mdl-button {
+      min-width: 32px; }
+  .chatinput__message-input {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px 15px 10px 10px; }
+    .chatinput__message-input .mdl-textfield {
+      width: 100%; }
+    .chatinput__message-input .mdl-button {
+      padding: 0;
+      margin-left: 10px;
+      min-width: 32px; }
