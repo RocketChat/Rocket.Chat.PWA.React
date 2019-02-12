@@ -7,7 +7,7 @@ import epics from "./epics/combinedEpics";
 import reducers from "./reducers/combinedReducers";
 
 
-const URL = "wss://demo.rocket.chat/websocket";
+const URL = "wss://open.rocket.chat/websocket";
 let realtimeAPI = new RealTimeAPI(URL);
 
 realtimeAPI.onError(err => store.dispatch({ type: "ADD_ERROR", payload: { reason: "Error" } }));
